@@ -57,72 +57,86 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AddToCart())),
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        const SizedBox(
-                          height: 40,
+              Column(
+                children: List.generate(burger.length, (index) {
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddToCart(
+                          index: index,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: white,
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.black38,
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 4.0,
-                                  spreadRadius: 1.0),
-                            ],
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Column(
+                          children: [
+                            const SizedBox(
+                              height: 40,
                             ),
-                          ),
-                          padding: const EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: red,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: white,
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Colors.black38,
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 4.0,
+                                      spreadRadius: 1.0),
+                                ],
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10),
                                 ),
-                                height: 150,
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Chipotle Cheesy Chicken",
-                                    style: textW600Stylepoppins(black, 16),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: red,
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(15),
+                                      ),
+                                    ),
+                                    height: 150,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        burger[index].name,
+                                        style: textW600Stylepoppins(black, 16),
+                                      ),
+                                      Text(
+                                        "${burger[index].price}",
+                                        style: textW600Stylepoppins(black, 16),
+                                      ),
+                                    ],
                                   ),
                                   Text(
-                                    "\$20.95",
-                                    style: textW600Stylepoppins(black, 16),
+                                    "Chicken Burger",
+                                    style: textW400Stylepoppins(grey, 14),
                                   ),
                                 ],
                               ),
-                              Text(
-                                "Chicken Burger",
-                                style: textW400Stylepoppins(grey, 14),
-                              ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            )
+                          ],
+                        ),
+                        Align(
+                          child: Hero(
+                              tag: "bigburger$index",
+                              child: Image.asset(burger[index].url)),
                         ),
                       ],
                     ),
-                    Align(
-                      child: Hero(
-                          tag: "bigburger", child: Image.asset(Assets.burger2)),
-                    ),
-                  ],
-                ),
+                  );
+                }),
               ),
             ],
           ),
@@ -207,42 +221,41 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget searchbar() {
-    return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      child: Container(
+        decoration: BoxDecoration(
+            boxShadow: [
+              boxShadow,
+              BoxShadow(
                 color: Colors.grey.shade300,
-                offset: const Offset(2.0, 2.0),
+                offset: const Offset(-2.0, -2.0),
                 blurRadius: 2.0,
-                spreadRadius: 1.0),
-            BoxShadow(
-              color: Colors.grey.shade300,
-              offset: const Offset(-2.0, -2.0),
-              blurRadius: 2.0,
-              spreadRadius: 1.0,
-            ),
-          ],
-          color: white,
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
-      child: Row(
-        children: [
-          const SizedBox(width: 10),
-          SizedBox(
-              height: 24,
-              width: 24,
-              child: SvgPicture.asset(Assets.search, fit: BoxFit.contain)),
-          const SizedBox(width: 10),
-          Expanded(
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Search our delicious burgers",
-                hintStyle: textW500Stylepoppins(grey, 14),
-                border: InputBorder.none,
-                disabledBorder: InputBorder.none,
+                spreadRadius: 1.0,
+              ),
+            ],
+            color: white,
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        child: Row(
+          children: [
+            const SizedBox(width: 10),
+            SizedBox(
+                height: 24,
+                width: 24,
+                child: SvgPicture.asset(Assets.search, fit: BoxFit.contain)),
+            const SizedBox(width: 10),
+            Expanded(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Search our delicious burgers",
+                  hintStyle: textW500Stylepoppins(grey, 14),
+                  border: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

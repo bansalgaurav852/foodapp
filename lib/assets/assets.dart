@@ -31,4 +31,9 @@ class Assets {
 
   static const String backbutton = "assets/addtocart/backbutton.svg";
   static const String bucket = "assets/addtocart/bag.svg";
+
+//cart
+  static const String cancal = "assets/cart/cancal.svg";
+
+  static const String hmore = "assets/cart/hmore.svg";
 }

@@ -7,7 +7,8 @@ Color grey = const Color(0xff667C8A);
 Color white = const Color(0xffFFFFFF);
 Color lightpink = const Color(0xffF27D82);
 Color backgroundcolor = const Color(0xffE5E5E5);
-BoxShadow button = const BoxShadow(
+
+BoxShadow boxShadow = const BoxShadow(
     color: Colors.black38,
     offset: Offset(1.0, 1.0),
     blurRadius: 4.0,

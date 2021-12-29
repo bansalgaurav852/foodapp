@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foodapp/Screens/cart.dart';
+import 'package:foodapp/Widgets/constwidget.dart';
 import 'package:foodapp/assets/assets.dart';
 import 'package:foodapp/constant/const.dart';
+import 'package:foodapp/models/itemsmodel.dart';
 
 class AddToCart extends StatefulWidget {
-  const AddToCart({Key? key}) : super(key: key);
+  int index;
+  AddToCart({Key? key, required this.index}) : super(key: key);
 
   @override
   _AddToCartState createState() => _AddToCartState();
@@ -13,8 +17,8 @@ class AddToCart extends StatefulWidget {
 class _AddToCartState extends State<AddToCart> {
   int select = 1;
   int quantity = 1;
-  double price = 21.95;
-  double total = 21.95;
+  double price = 20.95;
+  double total = 20.95;
 
   void cal(i) {
     return setState(() {
@@ -24,8 +28,11 @@ class _AddToCartState extends State<AddToCart> {
     });
   }
 
+  late int tag;
+
   @override
   void initState() {
+    tag = widget.index;
     cal(1);
     total = price;
     super.initState();
@@ -35,28 +42,14 @@ class _AddToCartState extends State<AddToCart> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 2.0,
-                        color: Colors.black26,
-                        spreadRadius: 1.0,
-                      )
-                    ],
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(250))),
-                height: MediaQuery.of(context).size.height * .62,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,8 +70,11 @@ class _AddToCartState extends State<AddToCart> {
                       "A signature flame-grilled chicken \n patty topped with smoked beef",
                       style: textW400Stylepoppins(grey, 14),
                     ),
-                    Hero(
-                        tag: "bigburger", child: Image.asset(Assets.bigburger)),
+                  ],
+                ),
+                Hero(tag: "bigburger$tag", child: Image.asset(burger[tag].url)),
+                Column(
+                  children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -86,25 +82,20 @@ class _AddToCartState extends State<AddToCart> {
                             onTap: () {
                               cal(0);
                             },
-                            child: sml("S", select == 0 ? red : white,
-                                select == 0 ? white : black)),
+                            child: sml("S", 0)),
                         InkWell(
                             onTap: () {
                               cal(2);
                             },
-                            child: sml("L", select == 2 ? red : white,
-                                select == 2 ? white : black)),
+                            child: sml("L", 2)),
                       ],
                     ),
                     InkWell(
                         onTap: () {
                           cal(1);
                         },
-                        child: sml("M", select == 1 ? red : white,
-                            select == 1 ? white : black)),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                        child: sml("M", 1)),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -138,68 +129,64 @@ class _AddToCartState extends State<AddToCart> {
                         RichText(
                             text: TextSpan(text: "Price\n", children: [
                           TextSpan(
-                              text: "\$${total}",
+                              text: "\$$total",
                               style: textW600Stylepoppins(black, 24))
                         ])),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: red,
-                              borderRadius: const BorderRadius.horizontal(
-                                  left: Radius.circular(10))),
-                          padding: const EdgeInsets.all(5),
-                          height: 50,
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                Assets.bucket,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Go To Cart",
-                                style: textW700Stylepoppins(white, 16),
-                              )
-                            ],
+                        InkWell(
+                          onTap: () => Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Cart(
+                              index: tag,
+                            );
+                          })),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: red,
+                                borderRadius: const BorderRadius.horizontal(
+                                    left: Radius.circular(10))),
+                            padding: const EdgeInsets.all(5),
+                            height: 50,
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.bucket,
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Go To Cart",
+                                  style: textW700Stylepoppins(white, 16),
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
                     )
                   ],
-                ),
-              ),
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget buttonui(icon) {
-    return Container(
-        padding: const EdgeInsets.all(8),
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-            color: white,
-            boxShadow: [button],
-            borderRadius: const BorderRadius.all(Radius.circular(8))),
-        child: icon);
-  }
-
-  Widget sml(text, color1, color2) {
+  Widget sml(text, index) {
     return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(4),
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            color: color1,
-            boxShadow: [button],
+            color: select == index ? red : white,
+            boxShadow: [boxShadow],
             borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: Text(
           text,
-          style: textW500Stylepoppins(color2, 22),
+          style: textW500Stylepoppins(select == index ? white : black, 22),
         ));
   }
 
