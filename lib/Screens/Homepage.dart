@@ -132,74 +132,77 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget itemcategory() {
-    return Row(
-      children: List.generate(3, (index) {
-        String? name = items[index].name;
-        String? item = items[index].item;
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                selecteditem = index;
-              });
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black38,
-                        offset: Offset(2.0, 2.0),
-                        blurRadius: 4.0,
-                        spreadRadius: 1.0),
-                  ],
-                  color: selecteditem == items[index].index ? red : white,
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              height: 200,
-              width: 100,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(height: 60, width: 50, child: Image.asset(item)),
-                  Stack(
-                    children: <Widget>[
-                      // Stroked text as border.
-                      Text(
-                        name,
-                        style: selecteditem == items[index].index
-                            ? TextStyle(
-                                fontSize: 22,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = black)
-                            : TextStyle(
-                                fontSize: 22,
-                                color: black,
-                                fontWeight: FontWeight.w500),
-                      ),
-                      // Solid text as fill.
-                      Text(name,
-                          style: TextStyle(
-                              fontSize: 22,
-                              color: selecteditem == items[index].index
-                                  ? white
-                                  : black)),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: List.generate(3, (index) {
+          String? name = items[index].name;
+          String? item = items[index].item;
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  selecteditem = index;
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.black38,
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 4.0,
+                          spreadRadius: 1.0),
                     ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: SvgPicture.asset(selecteditem == items[index].index
-                        ? Assets.rightarrowwhite
-                        : Assets.rightarrowblack),
-                  )
-                ],
+                    color: selecteditem == items[index].index ? red : white,
+                    borderRadius: const BorderRadius.all(Radius.circular(20))),
+                height: 200,
+                width: 100,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(height: 60, width: 50, child: Image.asset(item)),
+                    Stack(
+                      children: <Widget>[
+                        // Stroked text as border.
+                        Text(
+                          name,
+                          style: selecteditem == items[index].index
+                              ? TextStyle(
+                                  fontSize: 22,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 3
+                                    ..color = black)
+                              : TextStyle(
+                                  fontSize: 22,
+                                  color: black,
+                                  fontWeight: FontWeight.w500),
+                        ),
+                        // Solid text as fill.
+                        Text(name,
+                            style: TextStyle(
+                                fontSize: 22,
+                                color: selecteditem == items[index].index
+                                    ? white
+                                    : black)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: SvgPicture.asset(selecteditem == items[index].index
+                          ? Assets.rightarrowwhite
+                          : Assets.rightarrowblack),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 
