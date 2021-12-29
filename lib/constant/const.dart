@@ -1,4 +1,4 @@
-import 'package:flutter/rendering.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Color red = const Color(0xffC8161D);
@@ -7,6 +7,11 @@ Color grey = const Color(0xff667C8A);
 Color white = const Color(0xffFFFFFF);
 Color lightpink = const Color(0xffF27D82);
 Color backgroundcolor = const Color(0xffE5E5E5);
+BoxShadow button = const BoxShadow(
+    color: Colors.black38,
+    offset: Offset(1.0, 1.0),
+    blurRadius: 4.0,
+    spreadRadius: 1.0);
 
 textW400Stylepoppins(Color color, double fontSize) {
   return GoogleFonts.poppins(

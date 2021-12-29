@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(textTheme: TextTheme(bodyText1: GoogleFonts.poppins())),
       debugShowCheckedModeBanner: false,
-      home: Appnavigation(),
+      home: const Appnavigation(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foodapp/Screens/Addtocart.dart';
 import 'package:foodapp/assets/assets.dart';
 import 'package:foodapp/constant/const.dart';
 import 'package:foodapp/models/itemsmodel.dart';
@@ -56,53 +57,72 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
               const SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  color: white,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black38,
-                        offset: Offset(.0, .0),
-                        blurRadius: 4.0,
-                        spreadRadius: 1.0),
-                  ],
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AddToCart())),
+                child: Stack(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: red,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                      ),
-                      height: 150,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
                       children: [
-                        Text(
-                          "Chipotle Cheesy Chicken",
-                          style: textW600Stylepoppins(black, 16),
+                        const SizedBox(
+                          height: 40,
                         ),
-                        Text(
-                          "\$20.95",
-                          style: textW600Stylepoppins(black, 16),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: white,
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.black38,
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 4.0,
+                                  spreadRadius: 1.0),
+                            ],
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: red,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(15),
+                                  ),
+                                ),
+                                height: 150,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Chipotle Cheesy Chicken",
+                                    style: textW600Stylepoppins(black, 16),
+                                  ),
+                                  Text(
+                                    "\$20.95",
+                                    style: textW600Stylepoppins(black, 16),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "Chicken Burger",
+                                style: textW400Stylepoppins(grey, 14),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                    Text(
-                      "Chicken Burger",
-                      style: textW400Stylepoppins(grey, 14),
+                    Align(
+                      child: Image.asset(Assets.burger2),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
