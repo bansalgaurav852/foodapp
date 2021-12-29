@@ -30,4 +30,5 @@ class Assets {
   static const String bigburger = "assets/addtocart/burgerad.png";
 
   static const String backbutton = "assets/addtocart/backbutton.svg";
+  static const String bucket = "assets/addtocart/bag.svg";
 }

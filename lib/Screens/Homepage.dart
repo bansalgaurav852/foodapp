@@ -118,7 +118,8 @@ class _HomepageState extends State<Homepage> {
                       ],
                     ),
                     Align(
-                      child: Image.asset(Assets.burger2),
+                      child: Hero(
+                          tag: "bigburger", child: Image.asset(Assets.burger2)),
                     ),
                   ],
                 ),
