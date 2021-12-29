@@ -23,5 +23,5 @@ class Burgers {
 
 List<Burgers> burger = [
   Burgers("Chipotle Cheesy Chicken", Assets.burger2, 20.95),
-  Burgers("Chipotle Cheesy Chicken", Assets.bigburger, 20.75)
+  Burgers("Chipotle Cheesy ", Assets.bigburger, 20.75)
 ];

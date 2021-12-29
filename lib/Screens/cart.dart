@@ -33,7 +33,9 @@ class _CartState extends State<Cart> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                buttonui(SvgPicture.asset(Assets.backbutton)),
+                InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: buttonui(SvgPicture.asset(Assets.backbutton))),
                 Text(
                   "Cart",
                   style: textW700Stylepoppins(black, 18),

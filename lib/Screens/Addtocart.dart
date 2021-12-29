@@ -62,7 +62,7 @@ class _AddToCartState extends State<AddToCart> {
                       ],
                     ),
                     Text(
-                      "Chipotle Cheesy Chicken",
+                      burger[tag].name,
                       textScaleFactor: 1.1,
                       style: textW500Stylepoppins(black, 18),
                     ),

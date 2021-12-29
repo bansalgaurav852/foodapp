@@ -180,20 +180,7 @@ class _HomepageState extends State<Homepage> {
                     Stack(
                       children: <Widget>[
                         // Stroked text as border.
-                        Text(
-                          name,
-                          style: selecteditem == items[index].index
-                              ? TextStyle(
-                                  fontSize: 22,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 3
-                                    ..color = black)
-                              : TextStyle(
-                                  fontSize: 22,
-                                  color: black,
-                                  fontWeight: FontWeight.w500),
-                        ),
+
                         // Solid text as fill.
                         Text(name,
                             style: TextStyle(
