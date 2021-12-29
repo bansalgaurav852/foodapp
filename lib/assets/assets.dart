@@ -19,10 +19,15 @@ class Assets {
   static const String pizza = "assets/Homescreen_icon/pizza.png";
   static const String menu = "assets/Homescreen_icon/menu.svg";
   static const String location = "assets/Homescreen_icon/location.svg";
-  static const String profile = "assets/Homescreen_icon/profile.svg";
+
   static const String profile1 = "assets/Homescreen_icon/profile1.png";
   static const String search = "assets/Homescreen_icon/search.svg";
   static const String rightarrowwhite = "assets/Homescreen_icon/rightarrow.svg";
   static const String rightarrowblack =
       "assets/Homescreen_icon/rightarrowblack.svg";
+
+//addtocart
+  static const String bigburger = "assets/addtocart/burgerad.png";
+
+  static const String backbutton = "assets/addtocart/backbutton.svg";
 }
