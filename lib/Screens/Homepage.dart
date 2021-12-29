@@ -59,7 +59,7 @@ class _HomepageState extends State<Homepage> {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddToCart())),
+                    MaterialPageRoute(builder: (context) => const AddToCart())),
                 child: Stack(
                   children: [
                     Column(

@@ -80,7 +80,7 @@ class _AddToCartState extends State<AddToCart> {
                   },
                   child: sml("M", select == 1 ? red : white,
                       select == 1 ? white : black)),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -134,7 +134,7 @@ class _AddToCartState extends State<AddToCart> {
         decoration: BoxDecoration(
             color: white,
             boxShadow: [button],
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+            borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: icon);
   }
 
@@ -147,7 +147,7 @@ class _AddToCartState extends State<AddToCart> {
         decoration: BoxDecoration(
             color: color1,
             boxShadow: [button],
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+            borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: Text(
           text,
           style: textW500Stylepoppins(color2, 22),
@@ -156,7 +156,7 @@ class _AddToCartState extends State<AddToCart> {
 
   Widget circlebutton(text) {
     return Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(color: lightpink, shape: BoxShape.circle),
         child: Text(
           text,
