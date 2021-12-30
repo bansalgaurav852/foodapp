@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodapp/Screens/cart.dart';
 import 'package:foodapp/Widgets/constwidget.dart';
 import 'package:foodapp/assets/assets.dart';
-import 'package:foodapp/constant/const.dart';
+import 'package:foodapp/constant/color.dart';
+import 'package:foodapp/constant/demin.dart';
+import 'package:foodapp/constant/testStyle.dart';
 import 'package:foodapp/models/itemsmodel.dart';
 
 class AddToCart extends StatefulWidget {
@@ -185,8 +187,8 @@ class _AddToCartState extends State<AddToCart> {
     return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(4),
-        height: MediaQuery.of(context).size.height * .08,
-        width: MediaQuery.of(context).size.height * .08,
+        height: getHeight(context) * .08,
+        width: getHeight(context) * .08,
         decoration: BoxDecoration(
             color: select == index ? red : white,
             boxShadow: [boxShadow],

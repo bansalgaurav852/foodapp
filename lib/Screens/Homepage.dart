@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodapp/Screens/Addtocart.dart';
 import 'package:foodapp/assets/assets.dart';
-import 'package:foodapp/constant/const.dart';
+import 'package:foodapp/constant/color.dart';
+import 'package:foodapp/constant/testStyle.dart';
 import 'package:foodapp/models/itemsmodel.dart';
 
 class Homepage extends StatefulWidget {

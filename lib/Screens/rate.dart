@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodapp/constant/const.dart';
+import 'package:foodapp/constant/color.dart';
 
 class Rate extends StatefulWidget {
   const Rate({Key? key}) : super(key: key);

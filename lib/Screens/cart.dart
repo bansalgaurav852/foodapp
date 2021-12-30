@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodapp/Widgets/constwidget.dart';
 import 'package:foodapp/assets/assets.dart';
-import 'package:foodapp/constant/const.dart';
+import 'package:foodapp/constant/color.dart';
+import 'package:foodapp/constant/demin.dart';
+import 'package:foodapp/constant/testStyle.dart';
 import 'package:foodapp/models/itemsmodel.dart';
 
 class Cart extends StatefulWidget {
@@ -26,7 +28,7 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
+    double h = getHeight(context);
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -52,7 +54,7 @@ class _CartState extends State<Cart> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: List.generate(
-                        2,
+                        burger.length,
                         (index) => Card(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -74,21 +76,39 @@ class _CartState extends State<Cart> {
                                         Text(
                                           burger[index].name,
                                           style: textW600Stylepoppins(
-                                              black, h * .03),
+                                              black, h * .025),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: const [
-                                            Text("-"),
-                                            Text("2"),
-                                            Text("+")
-                                          ],
+                                        Card(
+                                          child: Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 2),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Text(
+                                                  "-",
+                                                  style: textW600Stylepoppins(
+                                                      red, h * .03),
+                                                ),
+                                                Text(
+                                                  "2",
+                                                  style: textW600Stylepoppins(
+                                                      black, h * .025),
+                                                ),
+                                                Text(
+                                                  "+",
+                                                  style: textW500Stylepoppins(
+                                                      red, h * .03),
+                                                )
+                                              ],
+                                            ),
+                                          ),
                                         )
                                       ],
                                     ),
@@ -121,7 +141,7 @@ class _CartState extends State<Cart> {
               Container(
                 alignment: Alignment.center,
                 width: double.infinity,
-                height: h * .1,
+                height: getHeight(context) * .08,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   color: black,
@@ -131,7 +151,7 @@ class _CartState extends State<Cart> {
                   children: [
                     Text(
                       "Apply Coupons  ",
-                      style: textW500Stylepoppins(white, h * .03),
+                      style: textW500Stylepoppins(white, h * .025),
                     ),
                     Icon(
                       Icons.arrow_right_alt,
@@ -165,7 +185,7 @@ class _CartState extends State<Cart> {
               Container(
                 alignment: Alignment.center,
                 width: double.infinity,
-                height: h * .1,
+                height: getHeight(context) * .08,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   color: red,
@@ -175,7 +195,7 @@ class _CartState extends State<Cart> {
                   children: [
                     Text(
                       "Proceed to payment method  ",
-                      style: textW500Stylepoppins(white, h * .03),
+                      style: textW500Stylepoppins(white, h * .025),
                     ),
                   ],
                 ),
@@ -188,18 +208,16 @@ class _CartState extends State<Cart> {
   }
 
   Widget paytext(BuildContext context, text, value) {
-    double h = MediaQuery.of(context).size.height;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           text,
-          style: textW400Stylepoppins(grey, h * .025),
+          style: textW400Stylepoppins(grey, getHeight(context) * .025),
         ),
         Text(
           "\$${value}",
-          style: textW500Stylepoppins(black, h * .025),
+          style: textW500Stylepoppins(black, getHeight(context) * .025),
         )
       ],
     );
