@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodapp/Screens/Addtocart.dart';
@@ -106,9 +108,13 @@ class _HomepageState extends State<Homepage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        burger[index].name,
-                                        style: textW600Stylepoppins(black, 16),
+                                      Expanded(
+                                        child: Text(burger[index].name,
+                                            textScaleFactor: 1.2,
+                                            maxLines: 3,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                color: black)),
                                       ),
                                       Text(
                                         "${burger[index].price}",
@@ -149,7 +155,7 @@ class _HomepageState extends State<Homepage> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(3, (index) {
+        children: List.generate(items.length, (index) {
           String? name = items[index].name;
           String? item = items[index].item;
           return Padding(
@@ -171,25 +177,19 @@ class _HomepageState extends State<Homepage> {
                     ],
                     color: selecteditem == items[index].index ? red : white,
                     borderRadius: const BorderRadius.all(Radius.circular(20))),
-                height: 200,
+                height: MediaQuery.of(context).size.height * .3,
                 width: 100,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(height: 60, width: 50, child: Image.asset(item)),
-                    Stack(
-                      children: <Widget>[
-                        // Stroked text as border.
-
-                        // Solid text as fill.
-                        Text(name,
-                            style: TextStyle(
-                                fontSize: 22,
-                                color: selecteditem == items[index].index
-                                    ? white
-                                    : black)),
-                      ],
-                    ),
+                    Text(name,
+                        textScaleFactor: 1.2,
+                        maxLines: 2,
+                        style: TextStyle(
+                            color: selecteditem == items[index].index
+                                ? white
+                                : black)),
                     SizedBox(
                       height: 30,
                       width: 30,

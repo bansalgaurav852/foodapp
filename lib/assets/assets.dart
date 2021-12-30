@@ -36,4 +36,9 @@ class Assets {
   static const String cancal = "assets/cart/cancal.svg";
 
   static const String hmore = "assets/cart/hmore.svg";
+
+  //rate
+  static const String delivery = "assets/rate_sevice/d.png";
+  static const String thumbsup = "assets/rate_sevice/thumbsdown.svg";
+  static const String thumbsdown = "assets/rate_sevice/thumbsup.svg";
 }

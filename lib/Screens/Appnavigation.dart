@@ -1,7 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foodapp/Screens/Addtocart.dart';
-import 'package:foodapp/Screens/cart.dart';
 import 'package:foodapp/assets/assets.dart';
 import 'package:foodapp/constant/const.dart';
 
